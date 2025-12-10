@@ -22,13 +22,10 @@ export async function callModel(
   const model = new ChatOpenAI({
     model: OPENAI_MODEL,
     temperature: 0.3,
-    streaming: false,
+    streaming: true,
     verbose: false,
     tags: ['agent'],
-    apiKey: OPENAI_API_KEY,
-    configuration: {
-      baseURL: "https://your_custom_url.com",
-  }
+    apiKey: OPENAI_API_KEY
   }).bindTools(tools);
 
   const response = new AIMessage(await model.invoke([new SystemMessage(SYSTEM_PROMPT),...messages],{recursionLimit:3}))

@@ -36,6 +36,10 @@ const entityExtractor = new ChatOpenAI({
   export async function generateAsyncTools(): Promise<any[]> {
     const toolsList: any[] = []
   
+    if (!MCP_SERVER_URL) {
+      throw new Error("MCP_SERVER_URL environment variable is not defined");
+    }
+  
     // Create client and connect to server
     const mcpClient = new MultiServerMCPClient({
       throwOnLoadError: true,

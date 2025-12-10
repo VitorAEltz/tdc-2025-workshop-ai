@@ -16,7 +16,7 @@ export class AzionCopilot {
 
     this.config = {
       server: this.serverConfig,
-      stream: config.stream ?? false,
+      stream: config.stream ?? true,
       historyMessages: config.historyMessages || []
     }
 
